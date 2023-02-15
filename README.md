@@ -17,9 +17,14 @@ This requires both versions to exist in the project. For example, the old packag
 
 Additionally, the script must resolve and update any references to the old assets. For example, there might be many game objects in the project that has the NHItem component, which must now know to use the new guid.
 
+To avoid conflicts of GUIDs, the script must also set the GUID of the new asset to something else, so the old assets may receive their GUIDs. It could be a random new GUID, but this script will just swap them with the old assets.
+
 ## Usage
 
 * Start with your current project, including the old assets. Make sure it is backed up.
 * Put this script in a folder like Assets/Editor. Make sure it compiles neatly before continuing.
 * Import the new base packages and any extensions that have the same issues. Expect to have many compile issues due to scripts being duplicated.
 * Run the script from Main Menu -> Assets -> Voodoocado -> Update GUIDs.
+* After some time, the update will be done. Unity will then have to import files again.
+* Delete the new base packages, as they will have served their purpose.
+* You can now import the new packages again from the package manager, which should sync well and show you if there is any changes to the actual asset files. 
